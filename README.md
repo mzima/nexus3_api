@@ -1,12 +1,12 @@
 # Sonatype Nexus 3.x API script collection
 
-This is mostly a collection of Groovy scripts to automate things on Sonytype Nexus 3.x.
+This is mostly a collection of Groovy scripts to automate things on Sonatype Nexus 3.x.
 
 ## api_scripts
 
-* `content_selector.groovy` : API script for content_selectors
-* `privilege.groovy` : API script for privileges
-* `repo_docker_hosted.groovy` : API script for hosted docker repositries
+* `content_selector.groovy` : API script for managing content_selectors
+* `privilege.groovy` : API script for creating or deleting privileges
+* `repo_docker_hosted.groovy` : API script for hosted docker repositories
 * `repo_raw_hosted.groovy` : API script for raw docker repositories
 * `role.groovy` : API script for roles management
 * `user.groovy` : API script for user management
@@ -32,8 +32,8 @@ curl -X POST \
 It is necessary to upload the <code>api_scripts</code> to Nexus. There are some scripts, located within the <code>helper</code> directory, which might be helpful to master this task:
 
 * `create_all` : Upload all API scripts to Nexus.
-* `create.sh` : Upload a API script to Nexus.
-* `delete.sh` : Delete a API script from nexus.
+* `create.sh` : Upload a single API script to Nexus.
+* `delete.sh` : Delete a single API script from nexus.
 * `list.sh` : List all API scripts
 * `run.sh` : Run a API script on Nexus (mostly useless because it does not pass any parameters)
 * `settings.conf` : Account settings
