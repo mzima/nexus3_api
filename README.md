@@ -7,6 +7,7 @@ This is mostly a collection of Groovy scripts to automate things on Sonatype Nex
 * `content_selector.groovy` : API script for managing content_selectors
 * `privilege.groovy` : API script for creating or deleting privileges
 * `repo_docker_hosted.groovy` : API script for hosted docker repositories
+* `repo_docker_group.groovy` : API script for docker group repositories
 * `repo_raw_hosted.groovy` : API script for raw docker repositories
 * `role.groovy` : API script for roles management
 * `user.groovy` : API script for user management
