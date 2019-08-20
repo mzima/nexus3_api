@@ -26,7 +26,6 @@ String id = args.id
 String description = args.description ?: id + ' Content Selector'
 String expression = args.expression ?: ''
 String type = args.type ?: 'csel'
-int errors = 0
 
 // main
 switch(action) {
@@ -38,6 +37,7 @@ switch(action) {
             attributes: ['expression': expression]
         )
         selectorManager.create(selectorConfig)
+        return(true)
         break
     case 'delete':
         selectorManager.browse().each {
@@ -45,18 +45,10 @@ switch(action) {
                 selectorManager.delete(it)
             }
         }
+        return(true)
         break
     default:
         log.error('undefined action')
-        errors = 1
+        return(false)
         break
-}
-
-// result output
-if (errors == 0) {
-    log.info('Script completed successfully')
-    return(true)
-} else {
-    log.info('Script failed')
-    return(false)
 }

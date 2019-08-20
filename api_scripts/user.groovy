@@ -30,28 +30,19 @@ String email = args.email ?: 'no@email.com'
 String password = args.password
 Boolean active = args.active ?: true
 def roles = args.roles
-int errors = 0
 
 // main
 switch(action) {
     case 'create':
         security.addUser(id, firstName, lastName, email, active, password, roles)
+        return(true)
         break
     case 'delete':
         security.securitySystem.deleteUser(id, 'default')
+        return(true)
         break
     default:
         log.error('undefined action')
-        errors = 1
+        return(false)
         break
-}
-
-
-// result output
-if (errors == 0) {
-    log.info('Script completed successfully')
-    return(true)
-} else {
-    log.info('Script failed')
-    return(false)
 }

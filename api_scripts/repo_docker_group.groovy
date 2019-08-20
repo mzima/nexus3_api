@@ -25,7 +25,6 @@ String active = args.active ?: true
 String blobstore = args.blobstore ?: "default"
 int port = args.port ?: 5050
 def members = args.members ?: []
-int errors = 0
 
 // main
 switch(action) {

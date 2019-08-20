@@ -15,7 +15,6 @@ import org.sonatype.nexus.security.user.UserNotFoundException
 import static org.sonatype.nexus.security.user.UserManager.DEFAULT_SOURCE
 import groovy.json.JsonSlurper
 
-
 def args = new JsonSlurper().parseText(args)
 
 // parameters
@@ -31,21 +30,14 @@ int errors = 0
 switch(action) {
     case 'create':
         security.addRole(id, name, description, privileges, roles)
+        return(true)
         break
     case 'delete':
         security.securitySystem.getAuthorizationManager(DEFAULT_SOURCE).deleteRole(id)
+        return(true)
         break
     default:
         log.error('undefined action')
-        errors = 1
+        return(false)
         break
-}
-
-// result output
-if (errors == 0) {
-    log.info('Script completed successfully')
-    return(true)
-} else {
-    log.info('Script failed')
-    return(false)
 }

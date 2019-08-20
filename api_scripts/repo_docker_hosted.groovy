@@ -26,21 +26,14 @@ switch(action) {
     case 'create':
         int port = args.port
         repository.createDockerHosted(id, null, port)
+        return(true)
         break
     case 'delete':
         repository.getRepositoryManager().delete(id)
+        return(true)
         break
     default:
         log.error('undefined action')
-        errors = 1
+        return(false)
         break
-}
-
-// result output
-if (errors == 0) {
-    log.info('Script completed successfully')
-    return(true)
-} else {
-    log.info('Script failed')
-    return(false)
 }

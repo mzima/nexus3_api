@@ -18,27 +18,19 @@ def args = new JsonSlurper().parseText(args)
 // params
 String action = args.action
 String id = args.id
-int errors = 0
 
 // main
 switch(action) {
     case 'create':
         repository.createRawHosted(id, 'default')
+        return(true)
         break
     case 'delete':
         repository.getRepositoryManager().delete(id)
+        return(true)
         break
     default:
         log.error('undefined action')
-        errors = 1
+        return(false)
         break
-}
-
-// result output
-if (errors == 0) {
-    log.info('Script completed successfully')
-    return(true)
-} else {
-    log.info('Script failed')
-    return(false)
 }

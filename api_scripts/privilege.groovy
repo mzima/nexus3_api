@@ -32,7 +32,6 @@ String name = args.name ?: id
 String description = args.description ?: id + ' Privilege'
 String type = args.type ?: 'repository-content-selector'
 def properties = args.properties
-int errors = 0
 
 // main
 switch(action) {
@@ -46,21 +45,14 @@ switch(action) {
             properties: properties
         )
         authorizationManager.addPrivilege(privilege)
+        return(true)
         break
     case 'delete':
         authorizationManager.deletePrivilege(id)
+        return(true)
         break
     default:
         log.error('undefined action')
-        errors = 1
+        return(false)
         break
-}
-
-// result
-if (errors == 0) {
-    log.info('Script completed successfully')
-    return(true)
-} else {
-    log.info('Script failed')
-    return(false)
 }
