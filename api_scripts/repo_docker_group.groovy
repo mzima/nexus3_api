@@ -21,8 +21,6 @@ def args = new JsonSlurper().parseText(args)
 // parameters
 String action = args.action
 String id = args.id
-String active = args.active ?: true
-String blobstore = args.blobstore ?: "default"
 int port = args.port ?: 5050
 def members = args.members ?: []
 
